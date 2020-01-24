@@ -1,3 +1,6 @@
+
+
+
 //prompt for type of characters to be used
 function createPassword() {
 
@@ -38,3 +41,5 @@ function createPassword() {
   console.log(yourPassword);
   document.getElementById("password").innerHTML = yourPassword;
 }
+
+
