@@ -72,6 +72,7 @@ header {
   clear: both;
 }
 
+
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -108,7 +109,7 @@ button[disabled] {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 85px;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
