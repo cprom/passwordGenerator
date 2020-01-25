@@ -9,37 +9,63 @@ function createPassword() {
   let arrSpecialChar = ['!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', "^", '_', '`', '{', "|", '}', "~",]
   let arrNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-  let passwordLength = prompt("Please pick a password length between 8 and 128 characters.")
+  let passwordLength = parseInt(prompt("Please pick a password length between 8 and 128 characters."))
   let message = alert("Please confirm what type of characters to use.")
   let lowercase = confirm("Lowercase characters")
   let uppercase = confirm("Uppercase characters")
   let numeric = confirm("Numeric characters")
   let specialChar = confirm("special character")
   let password2 = [];
-  let choiceCount = 0;
+  let newPassword = [];
+  let passFirstFour = ''
 
-
+  //logic to iterate through array if user prompts are true and create a new array of characters
+  console.log(passwordLength)
 
   for (let i = 0; i < passwordLength; i++) {
     if (lowercase === true) {
       password2.push(arrLowerChar[Math.floor(Math.random() * arrLowerChar.length)])
-      choiceCount++
-    } if (uppercase === true) {
+
+    }
+    if (uppercase === true) {
       password2.push(arrUpperChar[Math.floor(Math.random() * arrUpperChar.length)])
-      choiceCount++
+
     } if (specialChar === true) {
       password2.push(arrSpecialChar[Math.floor(Math.random() * arrSpecialChar.length)])
-      choiceCount++
+
     } if (numeric === true) {
       password2.push(arrNum[Math.floor(Math.random() * arrNum.length)])
-      choiceCount++
+
     }
+    // first 4 character from password2 will always meet user characters selection.  create string of first 4 characters from password2 array
+
+  }
+  passFirstFour = password2[0] + password2[1] + password2[2] + password2[3]
+  console.log("password2 " + password2);
+  console.log("first 4 " + passFirstFour);
+  console.log("again " + passFirstFour);
+  // loop through new array that was created to create another array with length equal to user's input minus 4 first characters
+  // console.log(password2)
+  for (let i = 0; i < passwordLength - 4; i++) {
+    newPassword.push(password2[Math.floor(Math.random() * password2.length)])
+    console.log(newPassword);
+
   }
 
-  let yourPassword = password2.join('');
+  //concat first 4 char of password with new password array
+  let yourPassword = newPassword.join('') + passFirstFour
+  console.log("3rd " + passFirstFour);
+
+  //shuffle new string to make final password using sort
+  let finalPassword = yourPassword.split('');
+  finalPassword.sort(function () { return 0.5 - Math.random() });
+  finalPassword = finalPassword.join('');
+
+  console.log("final password =  " + finalPassword);
+
 
   console.log(yourPassword);
-  document.getElementById("password").innerHTML = yourPassword;
+  document.getElementById("password").innerHTML = finalPassword;
 }
 
 
